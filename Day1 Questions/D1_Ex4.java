@@ -53,13 +53,11 @@ public class D1_Ex4
     public static void main(String[] args) {
         System.out.println("Testing Question 4 of Day 1");
         InputValidator1 val1 = new InputValidator1();
-        InputValidator3Test val3 = new InputValidator3Test();
-        InputValidator4Test val4 = new InputValidator4Test();
 
         System.out.println("Email Validation using " + val1.getClass() +" : " + val1.validateEmail("a")+ ","+ val1.validatePhoneNumber("phone"));
-        System.out.println("Email Validation using " + InputValidator2.class +" : " + InputValidator2.validateEmail("a")+ ","+ InputValidator2.validatePhoneNumber("phone"));
-        System.out.println("Email Validation using " + val3.getClass() +" : " + val3.validateEmail("a")+ ","+ val3.validatePhoneNumber("phone"));
-        System.out.println("Email Validation using " + val4.getClass() +" : " + val4.validateEmail("a")+ ","+ val4.validatePhoneNumber("phone"));
+        System.out.println("Email Validation using " + 
+        InputValidator2.class +" : " + InputValidator2.validateEmail("a")+ 
+        ","+ InputValidator2.validatePhoneNumber("phone"));
     }
 }
 
