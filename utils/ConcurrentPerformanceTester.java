@@ -158,4 +158,29 @@ public class ConcurrentPerformanceTester<P, Q, R> {
 
         System.out.println("====================================\n");
     }
+
+    public void runTestShortOutput() {
+        System.out.println("===== Running Test: " + testName + " =====");
+
+        R[] lastResult = null;
+        lastResult = executeOnce();
+        
+
+        if (expectedOutput != null) {
+            int i = 0;
+            boolean correct = true;
+            for (R r : expectedOutput)
+            {
+                
+                if (!r.equals(lastResult[i]))
+                {
+                    correct = false;
+                    break;
+                }
+                i++;
+            }
+            System.out.println("Output match: " + (correct ? "True" : "False"));
+        }
+        System.out.println("====================================\n");
+    }
 }

@@ -25,7 +25,9 @@ public class D10_Ex7 {
 
     public static float categorizeB(double orderAmount,Boolean isPremiumMember) { 
         float discount = 0;
-        if (orderAmount > 100) discount = 0.05f; if (orderAmount > 200) discount = 0.10f; if
+        if (orderAmount > 100) discount = 0.05f; 
+        if (orderAmount > 200) discount = 0.10f; 
+        if
 (isPremiumMember) discount = discount + 0.05f;
         
         return discount;
