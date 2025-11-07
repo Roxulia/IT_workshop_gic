@@ -153,7 +153,7 @@ public class ConcurrentPerformanceTester<P, Q, R> {
 
         if (expectedOutput != null) {
             boolean allMatch = results.stream().allMatch(r -> expectedOutput.equals(r));
-            System.out.println("Output match: " + (allMatch ? "✅ All matched" : "❌ Mismatch found"));
+            System.out.println("Output match: " + (allMatch ? " All matched" : " Mismatch found"));
         }
 
         System.out.println("====================================\n");
@@ -182,5 +182,30 @@ public class ConcurrentPerformanceTester<P, Q, R> {
             System.out.println("Output match: " + (correct ? "True" : "False"));
         }
         System.out.println("====================================\n");
+    }
+
+    public void runPerformanceTest(int iterations)
+    {
+        System.out.println("===== Running Test: " + testName + " =====");
+        Runtime runtime = Runtime.getRuntime();
+
+        // Warm-up (JIT optimization)
+        for (int i = 0; i < 100; i++) executeOnce();
+
+        runtime.gc();
+        long beforeMem = runtime.totalMemory() - runtime.freeMemory();
+        long start = System.nanoTime();
+
+        R[] lastResult = null;
+        for (int i = 0; i < iterations; i++) lastResult = executeOnce();
+
+        long end = System.nanoTime();
+        long afterMem = runtime.totalMemory() - runtime.freeMemory();
+
+        double elapsed = (end - start) / 1_000_000.0;
+        long memUsed = afterMem - beforeMem;
+
+        System.out.println("Time taken: " + elapsed + " ms for " + iterations + " iterations");
+        System.out.println("Memory used: " + memUsed + " bytes");
     }
 }
