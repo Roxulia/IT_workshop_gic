@@ -2,11 +2,13 @@ package com.example.gicws2.demo.Config;
 
 
 import javax.sql.DataSource;
+
+import com.example.gicws2.demo.Classes.MyBean;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class demo_config {
 
 
@@ -18,6 +20,11 @@ public class demo_config {
             .username("user")
             .password("password")
             .build();
+    }
+
+    @Bean
+    public MyBean myBean(){
+        return new MyBean();
     }
 
 }

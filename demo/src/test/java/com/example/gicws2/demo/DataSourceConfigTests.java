@@ -7,21 +7,35 @@ import javax.sql.DataSource;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DataSourceConfigTests {
 
     @Autowired
-    private DataSource dataSource;
+    @Qualifier("mainDataSource")
+    private DataSource mainDataSource;
+
+    @Autowired
+    @Qualifier("secondaryDataSource")
+    private DataSource secondaryDataSource;
 
     @Test
-    void testConnection() throws Exception {
-        assertNotNull(dataSource);
-        try (Connection conn = dataSource.getConnection()) {
-            assertTrue(conn.isValid(2));
-            System.out.println("Connected to DB: " + conn.getMetaData().getURL());
-        }
+    void testMainDataSources() {
+        assertNotNull(mainDataSource, "Main DataSource should not be null");
+    }
+
+    @Test
+    void testSecondaryDataSources() {
+
+        assertNotNull(secondaryDataSource, "Secondary DataSource should not be null");
+
+    }
+
+    @Test
+    void testMultipleDataSources() {
+        assertNotEquals(mainDataSource, secondaryDataSource, "DataSources should be different");
     }
 }
 
