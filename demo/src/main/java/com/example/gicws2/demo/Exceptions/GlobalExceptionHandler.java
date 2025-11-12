@@ -13,6 +13,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Global Error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleCustomException(CustomException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
     // Handle specific type
     @ExceptionHandler(ArithmeticException.class)
     public ResponseEntity<String> handleArithmeticException(ArithmeticException ex) {
