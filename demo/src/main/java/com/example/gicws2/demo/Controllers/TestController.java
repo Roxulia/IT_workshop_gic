@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping("/number5")
+@RequestMapping("/tests")
 public class TestController {
 
     @Autowired
@@ -66,6 +66,12 @@ public class TestController {
             return "success";
         }
         return "error";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam String query) {
+        System.out.println("Searching for: " + query);
+        return "searchResults for " + query;
     }
 
 }
