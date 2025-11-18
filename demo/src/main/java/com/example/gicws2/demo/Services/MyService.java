@@ -3,6 +3,7 @@ package com.example.gicws2.demo.Services;
 import com.example.gicws2.demo.Entity.MyEntity;
 import com.example.gicws2.demo.Repository.MyRepository;
 //import jakarta.persistence.Cacheable;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,7 @@ public class MyService {
         return "Product-" + id;
     }
 
+    @Transactional
     public void updateMyEntity(MyEntity myEntity)
     {
         repository.save(myEntity);

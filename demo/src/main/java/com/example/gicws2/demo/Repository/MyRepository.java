@@ -13,6 +13,6 @@ public interface MyRepository extends JpaRepository<MyEntity,Long> {
     @Override
     Page<MyEntity> findAll(Pageable pageable);
 
-    @Query("SELECT e FROM MyEntity e WHERE e.name LIKE '%:name%'")
+    @Query("SELECT e FROM MyEntity e WHERE e.name LIKE :name")
     List<MyEntity> findByName(String name);
 }
