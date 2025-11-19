@@ -1,25 +1,20 @@
 package com.example.gicworkshop.day7.Entity;
-
 import jakarta.persistence.*;
-
-import java.util.List;
+import java.util.*;
 
 @Entity
-public class Course {
+public class Blog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
 
+    // ❌ No cascade here — PROBLEM
+    @OneToMany(mappedBy = "blog")
+    private List<Post> posts = new ArrayList<>();
 
-    // getters and setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
+    // getters & setters
 }
+

@@ -1,27 +1,16 @@
 package com.example.gicworkshop.day7.Entity;
-
 import jakarta.persistence.*;
-import java.util.List;
+import java.util.*;
 
 @Entity
-public class Student {
+public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private Double price;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-
-    // getters and setters
+    // getters, setters
 }
-
-
-
