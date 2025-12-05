@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Success</title>
+</head>
+<body>
+
+<h2>Registration Successful!</h2>
+<p>Your account has been created.</p>
+<p th:text="${user.name}"></p>
+<p th:text="${user.email}"></p>
+<p th:text="${user.age}"></p>
+<a th:href="@{/users/register}">Register another user</a>
+
+</body>
+</html>
